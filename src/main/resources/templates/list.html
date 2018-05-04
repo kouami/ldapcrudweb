@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>student list</title>
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+<script>
+    $(document).ready(function() {
+        $('#student-list').DataTable();
+    } )
+</script>
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <nav class="uk-navbar uk-margin-large-bottom">
+        <a class="uk-navbar-brand uk-hidden-small" href="layouts_frontpage.html">Brand</a>
+        <ul class="uk-navbar-nav uk-hidden-small">
+            <li class="uk-active">
+                <a href="">Frontpage</a>
+            </li>
+            <li>
+                <a href="">Portfolio</a>
+            </li>
+            <li>
+                <a href="">Blog</a>
+            </li>
+            <li>
+                <a href="">Documentation</a>
+            </li>
+            <li>
+                <a href="">Contact</a>
+            </li>
+            <li>
+                <a href="">Login</a>
+            </li>
+        </ul>
+        <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
+        <div class="uk-navbar-brand uk-navbar-center uk-visible-small">Brand</div>
+    </nav>
+
+    <div class="uk-grid" data-uk-grid-margin>
+        <div class="uk-width-medium-1-1">
+            <table id="student-list" class="display compact uk-table uk-table-hover uk-table-striped" style="width:70%">
+                <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Last Name</th>
+                    <th>Initials</th>
+                    <th>Street Address</th>
+                    <th>Province</th>
+                    <th>State</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="student : ${studentList}">
+                    <td>${student.fullName}</td>
+                    <td>${student.lastName}</td>
+                    <td>${student.initials}</td>
+                    <td>${student.streetAddress}</td>
+                    <td>${student.province}</td>
+                    <td>${student.state}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="uk-grid" data-uk-grid-margin>
+        <div class="uk-width-medium-1-1">
+
+        </div>
+    </div>
+
+    <hr class="uk-grid-divider">
+</div>
+
+</body>
+</html>

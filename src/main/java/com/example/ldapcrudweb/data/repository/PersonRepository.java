@@ -1,6 +1,7 @@
 package com.example.ldapcrudweb.data.repository;
 
 
+import com.example.ldapcrudweb.data.domain.Address;
 import com.example.ldapcrudweb.data.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ldap.core.DirContextOperations;
@@ -88,6 +89,9 @@ public class PersonRepository implements IPersonRepository, BaseLdapNameAware {
         attrs.put("userPassword", p.getPassword());
         attrs.put("initials", p.getInitials());
         attrs.put("displayName", p.getDisplayName());
+        attrs.put("localityName", p.getAddress().getState());
+        attrs.put("stateOrProvinceName", p.getAddress().getProvince());
+        attrs.put("streetAddress", p.getAddress().getStreetAddress());
         return attrs;
     }
     public void delete(Person p) {
@@ -104,6 +108,12 @@ public class PersonRepository implements IPersonRepository, BaseLdapNameAware {
             person.setPassword(new String(bytePass));
             person.setInitials(context.getStringAttribute("initials"));
             person.setDisplayName(context.getStringAttribute("displayName"));
+
+            Address address = new Address();
+            address.setState(context.getStringAttribute("localityName"));
+            address.setProvince(context.getStringAttribute("stateOrProvinceName"));
+            address.setStreetAddress(context.getStringAttribute("streetAddress"));
+            person.setAddress(address);
             return person;
         }
     }

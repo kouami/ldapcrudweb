@@ -1,15 +1,9 @@
 package com.example.ldapcrudweb.data.domain;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
+@Data
 public class Person {
 
     private String userName;
@@ -18,16 +12,8 @@ public class Person {
     private String lastName;
     private String initials;
     private String displayName;
+    private Address address;
 
     public Person(){}
 
-    public Person(String userName, String password, String fullName, String lastName, String initials,
-                  String displayName) {
-        this.userName = userName;
-        this.password = password;
-        this.fullName = fullName;
-        this.lastName = lastName;
-        this.initials = initials;
-        this.displayName = displayName;
-    }
 }

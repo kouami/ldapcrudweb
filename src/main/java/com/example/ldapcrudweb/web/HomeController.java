@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
+
 @Controller
 public class HomeController {
 
@@ -18,8 +20,9 @@ public class HomeController {
     }
 
     @RequestMapping("/login")
-    public ModelAndView login() {
+    public ModelAndView login(Principal principal) {
         ModelAndView modelAndView = new ModelAndView("login");
+       // System.out.println(principal.toString());
         //modelAndView.addObject("message", message);
         return modelAndView;
     }
